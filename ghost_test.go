@@ -12,3 +12,11 @@ func TestConvert(t *testing.T) {
 	}
 	g.ParseOutMsg(msg)
 }
+
+func TestZip(t *testing.T) {
+	g := NewGhost()
+	err := g.ZipDirByPath("./testing/out", "./testing/out/x.zip")
+	if err != nil {
+		t.Fatalf("error=%+v\n", err)
+	}
+}
