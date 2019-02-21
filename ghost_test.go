@@ -6,7 +6,7 @@ import (
 
 func TestConvert(t *testing.T) {
 	g := NewGhost()
-	msg, err := g.Convert("./testing/image_test.pdf", "./testing/out")
+	msg, err := g.Convert("./testing/image_test.pdf", "./testing/out", 200)
 	if err != nil {
 		t.Fatalf("error=%+v\n%s", err, msg)
 	}

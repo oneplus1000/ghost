@@ -3,6 +3,7 @@ package ghost
 import (
 	"archive/zip"
 	"bytes"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -22,9 +23,9 @@ func NewGhost() *Ghost {
 	return &g
 }
 
-func (g Ghost) Convert(pdfSrc, dest string) (string, error) {
+func (g Ghost) Convert(pdfSrc, dest string, ppi int) (string, error) {
 	output := filepath.Join(dest, "file_%03d.png")
-	cmd := exec.Command("gs", "-sDEVICE=pngalpha", "-o", output, "-r144", pdfSrc)
+	cmd := exec.Command("gs", "-sDEVICE=pngalpha", "-o", output, fmt.Sprintf("-r%s", ppi), pdfSrc)
 	//cmd.Stdin = os.Stdin
 	var errMsg bytes.Buffer
 	var outMsg bytes.Buffer
